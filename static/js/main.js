@@ -1,8 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
-    loadCountries();
-});
+const loadCTRBTN = document.getElementById('loadCountriesBTN');
 
-function loadCountries() {
+loadCTRBTN.addEventListener('click', function loadCountries() {
     fetch('/get_countries')
         .then(response => response.json())
         .then(data => {
@@ -17,7 +15,7 @@ function loadCountries() {
                 countryList.appendChild(document.createElement('br'));
             });
         });
-}
+})
 
 function loadCities(country) {
     fetch(`/get_cities/${country}`)
@@ -43,26 +41,26 @@ function loadCustomers(city) {
             const customerList = document.getElementById('customer-list');
             customerList.innerHTML = '<h2>Elenco Clienti</h2>';
             if (data.length > 0) {
-                const table = document.createElement('table');
-                const header = table.createTHead().insertRow();
+                let tableHtml = '<table><thead><tr>';
+
                 Object.keys(data[0]).forEach(key => {
-                    const th = document.createElement('th');
-                    th.textContent = key;
-                    header.appendChild(th);
+                    tableHtml += `<th>${key}</th>`;
                 });
+                tableHtml += '</tr></thead><tbody>';
 
-                const tbody = table.createTBody();
                 data.forEach(customer => {
-                    const row = tbody.insertRow();
+                    tableHtml += '<tr>';
                     Object.values(customer).forEach(value => {
-                        const cell = row.insertCell();
-                        cell.textContent = value;
+                        tableHtml += `<td>${value}</td>`;
                     });
+                    tableHtml += '</tr>';
                 });
 
-                customerList.appendChild(table);
+                tableHtml += '</tbody></table>';
+                customerList.innerHTML += tableHtml;
             } else {
                 customerList.textContent = 'Nessun cliente trovato per questa città.';
             }
         });
 }
+loadCountries();

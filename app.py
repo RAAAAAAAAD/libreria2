@@ -3,7 +3,6 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# Load the data
 dati_clienti = pd.read_csv('data/dati_clienti.csv')
 
 @app.route('/')

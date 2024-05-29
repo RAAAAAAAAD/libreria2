@@ -2,11 +2,14 @@
 <html>
 <head>
     <title>Homepage</title>
-    <script src="static/js/main.js" defer></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}" defer></script>
 </head>
 <body>
     <h1>Homepage</h1>
-    <div id="country-list"></div>
+    <div id="country-list">
+        <h2>Seleziona una Nazione</h2>
+        <button id="loadCountriesBTN">Load Countries</button>
+    </div>
     <div id="city-list"></div>
     <div id="customer-list"></div>
 </body>
