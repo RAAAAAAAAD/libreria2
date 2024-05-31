@@ -5,12 +5,22 @@
     <script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}" defer></script>
 </head>
 <body>
-    <h1>Homepage</h1>
     <div id="country-list">
         <h2>Seleziona una Nazione</h2>
-        <button id="loadCountriesBTN">Load Countries</button>
+        <button id="loadCountriesBTN">Clicca per selezionare</button>
     </div>
     <div id="city-list"></div>
     <div id="customer-list"></div>
+    <div id="add-customer">
+        <form action="/add_customers" method="post">
+            <p>customer id<input type="number" name = "id" ></p>
+            <p>CustomerName<input type="text" name = "username" ></p>
+            <p>Contact Name<input type="text" name = "name" ></p>
+            <p>Address<input type="text" name = "address" ></p>
+            <p>City<input type="text" name = "city" ></p>
+            <p>PostalCode<input type="text" name = "cap" ></p>
+            <p>Country<input type="text" name = "country" ></p>
+        </form>
+    </div>
 </body>
 </html>

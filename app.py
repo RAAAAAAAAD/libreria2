@@ -26,5 +26,19 @@ def get_customers():
     customers_info = dati_clienti[dati_clienti['City'] == city]
     return jsonify(customers_info.to_dict(orient='records'))
 
+@app.route('/add_customers', methods=['POST'])
+def add_customers():
+    if request.method == 'GET':
+        return "The URL /data is accessed directly. Try going to '/form' to submit form"
+    if request.method == 'POST':
+        customer_id= int(result.json['id'])
+        CustomerName = folat(result.json['username'])
+        Contact_Name = float(result.json['name'])
+        Address = folat(result.json['address'])
+        City = float(result.json['city'])
+        PostalCode = folat(result.json['cap'])
+        Country = folat(result.json['country'])
+        return jsonify()
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=32457, debug=True)

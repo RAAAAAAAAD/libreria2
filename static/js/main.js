@@ -63,4 +63,8 @@ function loadCustomers(city) {
             }
         });
 }
-loadCountries();
+
+function addCustomers(){
+    fetch('/add_customers')
+
+}
